@@ -1,0 +1,8 @@
+.mat-column-COMPARE_CHECKBOX {
+  width: 32px;
+}
+
+.mat-column-CURRENCY__hover:hover {
+  background-color: #e8e8e8;
+  cursor: pointer;
+}

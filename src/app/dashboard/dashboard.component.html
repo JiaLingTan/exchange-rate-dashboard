@@ -1,0 +1,10 @@
+<div class="rounded p-5 bg-white mb-4">
+  <app-convertor
+    [supportedCurrencies]="supportedCurrencies$ | async"
+  ></app-convertor>
+</div>
+
+<app-exchange-rate
+  class="d-flex flex-column"
+  [supportedCurrencies]="supportedCurrencies$ | async"
+></app-exchange-rate>

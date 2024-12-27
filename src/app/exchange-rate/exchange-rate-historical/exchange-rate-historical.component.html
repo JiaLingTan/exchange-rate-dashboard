@@ -1,0 +1,10 @@
+<div class="rounded p-5 bg-white my-5">
+  <app-card-title
+    [title]="baseCode.concat(' conversion chart')"
+  ></app-card-title>
+  <app-time-period
+    [currentPeriod]="period"
+    (onPeriodClick)="onPeriodClick.emit($event)"
+  ></app-time-period>
+  <div #lineChart></div>
+</div>

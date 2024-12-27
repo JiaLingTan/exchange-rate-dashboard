@@ -1,0 +1,93 @@
+<div class="rounded p-5 bg-white mb-4">
+  <app-card-title
+    class="d-block mb-4"
+    title="Exchange Rates"
+    [secondaryTemplate]="compareRatesBtn"
+  ></app-card-title>
+
+  <app-exchange-rate-search
+    [searchField]="searchField"
+  ></app-exchange-rate-search>
+
+  <table
+    mat-table
+    matSort
+    (matSortChange)="
+      sortSub$.next({ order: $event.direction, field: $event.active })
+    "
+    [dataSource]="sortedRates$"
+    matSortActive="CURRENCY"
+    matSortDirection="asc"
+    matSortDisableClear
+  >
+    <ng-container matColumnDef="COMPARE_CHECKBOX">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let rate; let i = index">
+        <mat-checkbox
+          [disabled]="
+            (selection.selected.length === 3 &&
+              !selection.isSelected(rate.code)) ||
+            i === 0
+          "
+          (click)="$event.stopPropagation()"
+          (change)="$event ? selection.toggle(rate.code) : null"
+          [checked]="selection.isSelected(rate.code) || i === 0"
+        >
+        </mat-checkbox>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="CURRENCY">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Currency</th>
+      <td
+        mat-cell
+        *matCellDef="let rate; let i = index"
+        (click)="basedCodeField.setValue(rate.code)"
+        [ngClass]="{ 'mat-column-CURRENCY__hover': i > 0 }"
+      >
+        <div class="d-flex align-items-center">
+          <!--          <img [src]="rate.url"/>-->
+          <span class="fs-6 mx-2">{{ rate.code }}</span
+          ><span [ngClass]="{ 'text-muted': i > 0 }"> {{ rate.name }}</span>
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="AMOUNT">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
+      <td mat-cell *matCellDef="let rate">{{ rate.amount }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      mat-header-row
+      *matRowDef="let row; columns: displayedColumns"
+      [ngClass]="{ 'mat-row--first': row.position }"
+    >
+      {{
+        row
+      }}
+    </tr>
+  </table>
+</div>
+
+<ng-container *ngIf="comparison$ | async as comparison">
+  <app-historical
+    [metrics]="comparison.metrics"
+    [selection]="selection.selected"
+    [baseCode]="comparison.baseCode"
+    [period]="period$ | async"
+    (onPeriodClick)="
+      compareRates(selection.selected, basedCodeField.value, $event)
+    "
+  ></app-historical>
+</ng-container>
+
+<ng-template #compareRatesBtn>
+  <button
+    class="btn btn-primary"
+    type="button"
+    (click)="compareRates(selection.selected, basedCodeField.value, '1M')"
+    [disabled]="selection.selected.length === 0"
+  >
+    Compare
+  </button>
+</ng-template>

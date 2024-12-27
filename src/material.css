@@ -1,0 +1,8 @@
+.mat-mdc-table {
+  .mdc-data-table__content {
+    .mat-mdc-header-row:first-child {
+      background-color: #152238;
+      color: white;
+    }
+  }
+}

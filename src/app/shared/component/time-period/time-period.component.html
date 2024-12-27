@@ -1,0 +1,30 @@
+<div class="d-flex justify-content-center align-items-center flex-column">
+  <div class="mb-2 h6">Time Frame</div>
+  <div>
+    <button
+      class="btn btn-outline-primary rounded-pill"
+      [ngClass]="{ active: currentPeriod === '48h' }"
+      type="button"
+      (click)="onPeriodClick.emit('48h')"
+    >
+      48 hours
+    </button>
+    <button
+      class="btn btn-outline-primary mx-3 rounded-pill"
+      [ngClass]="{ active: currentPeriod === '1W' }"
+      type="button"
+      (click)="onPeriodClick.emit('1W')"
+    >
+      1 week
+    </button>
+    <button
+      class="btn btn-outline-primary rounded-pill"
+      [ngClass]="{ active: currentPeriod === '1M' }"
+      type="button"
+      (click)="onPeriodClick.emit('1M')"
+    >
+      1 month
+    </button>
+    <button mat-raised-button class="rounded-pill">Hello</button>
+  </div>
+</div>
