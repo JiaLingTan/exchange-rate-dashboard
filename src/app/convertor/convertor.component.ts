@@ -19,6 +19,7 @@ import {
 import { CurrencyService } from '../service/currency.service';
 import { BehaviorSubject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { CardTitleComponent } from '../shared/component/card-title/card-title.component';
 
 @Component({
   selector: 'app-convertor',
@@ -32,6 +33,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     AsyncPipe,
     DatePipe,
     CurrencyPipe,
+    CardTitleComponent,
   ],
   templateUrl: './convertor.component.html',
   styleUrl: './convertor.component.css',

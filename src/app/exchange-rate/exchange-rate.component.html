@@ -1,5 +1,5 @@
 <ng-container *ngIf="{ isOnline: isOnline$ | async } as context">
-  <div class="rounded p-5 bg-white mb-4">
+  <div class="rounded p-lg-5 p-3 bg-white mb-4">
     <app-card-title
       class="d-block mb-4"
       title="Exchange Rates"
@@ -45,10 +45,12 @@
           (click)="basedCodeField.setValue(rate.code)"
           [ngClass]="{ 'mat-column-CURRENCY__hover': i > 0 }"
         >
-          <div class="d-flex align-items-center">
-            <!--          <img [src]="rate.url"/>-->
-            <span class="fs-6 mx-2">{{ rate.code }}</span
-            ><span [ngClass]="{ 'text-muted': i > 0 }"> {{ rate.name }}</span>
+          <div class="d-flex align-items-lg-center flex-lg-row flex-column">
+            <div>
+              <img [src]="rate.url" [alt]="rate.name"/>
+              <span class="fs-6 mx-2">{{ rate.code }}</span>
+            </div>
+            <div [ngClass]="{ 'text-muted': i > 0 }">{{ rate.name }}</div>
           </div>
         </td>
       </ng-container>

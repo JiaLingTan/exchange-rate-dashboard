@@ -1,6 +1,10 @@
 :root {
   --mdc-checkbox-selected-icon-color: #152238;
+  --mdc-checkbox-selected-focus-icon-color: #152238;
   --mdc-checkbox-selected-hover-state-layer-color: #152238;
+  --mdc-checkbox-selected-hover-icon-color: #152238;
+  --mdc-checkbox-selected-focus-state-layer-color: #152238;
+  --mdc-checkbox-selected-pressed-state-layer-color: #152238;
 }
 
 .mat-mdc-table {

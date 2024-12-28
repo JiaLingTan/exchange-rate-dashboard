@@ -1,4 +1,4 @@
-<p class="mb-4 h1">Currency convertor</p>
+<app-card-title [title]="'Currency Convertor'"></app-card-title>
 <form
   [formGroup]="form"
   (ngSubmit)="
@@ -10,7 +10,10 @@
       )
   "
 >
-  <div class="d-flex justify-content-between w-100" *ngIf="supportedCurrencies">
+  <div
+    class="d-flex justify-content-between w-100 flex-lg-row flex-column"
+    *ngIf="supportedCurrencies"
+  >
     <mat-form-field class="w-100">
       <mat-label>Amount</mat-label>
       <input matInput formControlName="amount"/>
@@ -20,7 +23,7 @@
         <mat-error>Invalid amount</mat-error>
       }
     </mat-form-field>
-    <mat-form-field class="w-100 mx-3">
+    <mat-form-field class="w-100 mx-lg-3">
       <mat-label>From</mat-label>
       <mat-select formControlName="from">
         <mat-option
