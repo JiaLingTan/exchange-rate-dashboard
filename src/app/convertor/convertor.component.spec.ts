@@ -4,7 +4,8 @@ import { ConvertorComponent } from './convertor.component';
 import { CurrencyService } from '../service/currency.service';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
-import { of, take, toArray } from 'rxjs';
+import { of, take, throwError, toArray } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 describe('ConvertorComponent', () => {
   beforeEach(async () => {
@@ -62,6 +63,31 @@ describe('ConvertorComponent', () => {
         done();
       });
       component.onSubmit('599', 'USD', 'EUR');
+    });
+
+    it('should show a snackbar if fail to retrieve the data', () => {
+      spyOn<CurrencyService, any>(
+        TestBed.inject(CurrencyService),
+        'pairCurrencyWithAmount',
+      ).and.returnValue(throwError(() => new Error('Server Error')));
+      const openSnackSpy = spyOn<MatSnackBar, any>(
+        TestBed.inject(MatSnackBar),
+        'open',
+      );
+
+      const component =
+        TestBed.createComponent(ConvertorComponent).componentInstance;
+      component.onSubmit('599', 'USD', 'EUR');
+      expect(openSnackSpy).toHaveBeenCalledOnceWith(
+        'There is an error. Please try again later' as any,
+        '' as any,
+        {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+          panelClass: ['notification-error'],
+        } as any,
+      );
     });
   });
 });

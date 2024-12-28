@@ -1,8 +1,31 @@
+:root {
+  --mdc-checkbox-selected-icon-color: #152238;
+  --mdc-checkbox-selected-hover-state-layer-color: #152238;
+}
+
 .mat-mdc-table {
   .mdc-data-table__content {
     .mat-mdc-header-row:first-child {
       background-color: #152238;
       color: white;
     }
+  }
+}
+
+.mat-mdc-snack-bar-container.notification-success {
+  .mdc-snackbar__surface {
+    background-color: #95d459;
+  }
+}
+
+.mat-mdc-snack-bar-container.notification-error {
+  .mdc-snackbar__surface {
+    background-color: #ee4036;
+  }
+}
+
+.mat-mdc-snack-bar-container.notification-warning {
+  .mdc-snackbar__surface {
+    background-color: #ffca18;
   }
 }

@@ -1,27 +1,59 @@
-# ExchangeRateDashboard
+# Exchange Rate Dashboard
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.12.
+This is an interactive Exchange Rate Dashboard that allows users to monitor and compare exchange rates between multiple currencies.
+The platform provides real-time rates, allows comparison of up to three currencies,
+and displays historical trends through an interactive chart.
+
+Please note that this project uses the free APIs from [CurrencyLayer](https://currencylayer.com/documentation)
+and [ExchangeRate-api](https://www.exchangerate-api.com/docs/overview). These free API plans have monthly usage limits, which may be reached over time.
+If you encounter any issues with API limits, you can easily update the API Access Key in the currency service file.
+
+### Prerequisites
+
+- [NPM](https://www.npmjs.com/get-npm)
+- [Google Chrome](https://www.google.com/chrome/browser/desktop/)
+
+### Setting up Dev
+
+```shell
+git clone git@github.com:JiaLingTan/exchange-rate-dashboard.git
+npm install
+```
+
+This will pull the code from the git repository and install all the needed dependencies for the application
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+```shell
+ng serve
+```
 
-## Code scaffolding
+or
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```shell
+npm start
+```
+
+To start the dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```shell
+ng build
+```
+
+To build the project. The build artifacts will be stored in the `dist/` directory.
 
 ## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```shell
+ng test
+```
 
-## Running end-to-end tests
+or
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```shell
+npm test
+```
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+To execute the unit tests via [Karma](https://karma-runner.github.io).

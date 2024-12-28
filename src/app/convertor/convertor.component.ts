@@ -18,6 +18,7 @@ import {
 } from '@angular/forms';
 import { CurrencyService } from '../service/currency.service';
 import { BehaviorSubject } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-convertor',
@@ -45,6 +46,7 @@ export class ConvertorComponent {
   constructor(
     private fb: FormBuilder,
     private currencyService: CurrencyService,
+    private snackBar: MatSnackBar,
   ) {
     this.form = this.fb.group({
       amount: new FormControl('1.00', [
@@ -57,8 +59,15 @@ export class ConvertorComponent {
   }
 
   onSubmit(amount: string, from: string, to: string) {
-    this.currencyService
-      .pairCurrencyWithAmount(amount, from, to)
-      .subscribe((data) => this.convertedDataSub$.next(data));
+    this.currencyService.pairCurrencyWithAmount(amount, from, to).subscribe({
+      next: (data) => this.convertedDataSub$.next(data),
+      error: () =>
+        this.snackBar.open('There is an error. Please try again later', '', {
+          duration: 3000,
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
+          panelClass: ['notification-error'],
+        }),
+    });
   }
 }
