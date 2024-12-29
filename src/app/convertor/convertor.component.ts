@@ -19,7 +19,8 @@ import {
 import { CurrencyService } from '../service/currency.service';
 import { BehaviorSubject } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CardTitleComponent } from '../shared/component/card-title/card-title.component';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-convertor',
@@ -33,7 +34,8 @@ import { CardTitleComponent } from '../shared/component/card-title/card-title.co
     AsyncPipe,
     DatePipe,
     CurrencyPipe,
-    CardTitleComponent,
+    MatCardModule,
+    MatButtonModule,
   ],
   templateUrl: './convertor.component.html',
   styleUrl: './convertor.component.css',

@@ -13,7 +13,7 @@ export class CurrencyService {
   private basePath =
     'https://v6.exchangerate-api.com/v6/6edcc17bbcb2cdf30ac867cf/';
   private basePathCurrencyLayer =
-    'https://api.currencylayer.com/timeframe?access_key=cd453e73d367852e59cd58e4fab5aad6';
+    'https://api.currencylayer.com/timeframe?access_key=c0526b62c37750ac00ba4b42713098f1';
 
   constructor(private http: HttpClient) {}
 

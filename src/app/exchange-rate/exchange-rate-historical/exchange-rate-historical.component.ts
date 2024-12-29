@@ -10,17 +10,17 @@ import {
   ViewChild,
 } from '@angular/core';
 import * as d3 from 'd3';
-import { CardTitleComponent } from '../../shared/component/card-title/card-title.component';
 import { ComparisonMetrics } from '../../shared/models/comparison.interface';
 import {
   PERIOD,
   TimePeriodComponent,
 } from '../../shared/component/time-period/time-period.component';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-historical',
   standalone: true,
-  imports: [CardTitleComponent, TimePeriodComponent],
+  imports: [TimePeriodComponent, MatCardModule],
   templateUrl: './exchange-rate-historical.component.html',
 })
 export class ExchangeRateHistoricalComponent
@@ -62,7 +62,6 @@ export class ExchangeRateHistoricalComponent
         .attr('transform', `translate(${margin.left},${margin.top})`);
     } else this.svg.selectAll('*').remove();
 
-    const parseDate = d3.timeParse('%Y-%m-%d');
     const x = d3
       .scaleTime()
       .domain(d3.extent(quotes, (d) => d3.isoParse(d.date)))

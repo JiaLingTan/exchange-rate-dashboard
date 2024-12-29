@@ -7,11 +7,18 @@ import { CurrenciesConversionData } from '../shared/models/currency.interface';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { LocalStorageService } from '../service/local-storage.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [ExchangeRateComponent, ConvertorComponent, AsyncPipe, NgIf],
+  imports: [
+    ExchangeRateComponent,
+    ConvertorComponent,
+    AsyncPipe,
+    NgIf,
+    MatCardModule,
+  ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })

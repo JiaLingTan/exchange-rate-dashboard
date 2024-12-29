@@ -5,6 +5,25 @@
   --mdc-checkbox-selected-hover-icon-color: #152238;
   --mdc-checkbox-selected-focus-state-layer-color: #152238;
   --mdc-checkbox-selected-pressed-state-layer-color: #152238;
+  ----mdc-checkbox-selected-pressed-icon-color: #152238;
+  --mat-card-title-text-size: 32px;
+}
+
+mat-card-header.mat-mdc-card-header {
+  padding: 16px;
+  width: 100%;
+}
+
+mat-card-header {
+  .mat-mdc-card-header-text {
+    width: 100%;
+  }
+
+  .mat-mdc-card-title {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
 }
 
 .mat-mdc-table {

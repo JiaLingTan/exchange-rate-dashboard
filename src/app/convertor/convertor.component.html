@@ -1,79 +1,90 @@
-<app-card-title [title]="'Currency Convertor'"></app-card-title>
-<form
-  [formGroup]="form"
-  (ngSubmit)="
-    form.valid &&
-      onSubmit(
-        form.get('amount').value,
-        form.get('from').value,
-        form.get('to').value
-      )
-  "
->
-  <div
-    class="d-flex justify-content-between w-100 flex-lg-row flex-column"
-    *ngIf="supportedCurrencies"
+<mat-card-header>
+  <mat-card-title>Currency Convertor</mat-card-title>
+</mat-card-header>
+<mat-card-content>
+  <form
+    [formGroup]="form"
+    (ngSubmit)="
+      form.valid &&
+        onSubmit(
+          form.get('amount').value,
+          form.get('from').value,
+          form.get('to').value
+        )
+    "
   >
-    <mat-form-field class="w-100">
-      <mat-label>Amount</mat-label>
-      <input matInput formControlName="amount"/>
-      @if (form.get("amount").hasError("required")) {
-        <mat-error>Amount is required</mat-error>
-      } @else if (form.get("amount").hasError("pattern")) {
-        <mat-error>Invalid amount</mat-error>
-      }
-    </mat-form-field>
-    <mat-form-field class="w-100 mx-lg-3">
-      <mat-label>From</mat-label>
-      <mat-select formControlName="from">
-        <mat-option
-          *ngFor="let currency of supportedCurrencies.code"
-          [value]="currency"
-        >{{ currency }} - {{ supportedCurrencies[currency] }}
-        </mat-option>
-      </mat-select>
-      @if (form.get("from").invalid) {
-        <mat-error>Please select the currency</mat-error>
-      }
-    </mat-form-field>
-    <mat-form-field class="w-100">
-      <mat-label>To</mat-label>
-      <mat-select formControlName="to">
-        <mat-option
-          *ngFor="let currency of supportedCurrencies.code"
-          [value]="currency"
-        >{{ currency }} - {{ supportedCurrencies[currency] }}
-        </mat-option>
-      </mat-select>
-      @if (form.get("to").invalid) {
-        <mat-error>Please select the currency</mat-error>
-      }
-    </mat-form-field>
-  </div>
-
-  <div class="d-flex">
-    <div class="flex-grow-1" *ngIf="convertedData$ | async as data">
-      <div class="text-muted fs-6">
-        {{ form.get("amount").value }}
-        {{ supportedCurrencies[data.base_code] }} =
-      </div>
-      <div class="h2">
-        {{ data.conversion_result }}
-        {{ supportedCurrencies[data.target_code] }}
-      </div>
-      <div class="text-muted">
-        1 {{ data.base_code }} = {{ data.conversion_rate }} &nbsp;{{
-          data.target_code
-        }}
-      </div>
-
-      <div class="fw-lighter mt-3">
-        Last updated {{ data.time_last_update_utc | date: "medium" }}
-      </div>
+    <div
+      class="d-flex justify-content-between w-100 flex-lg-row flex-column"
+      *ngIf="supportedCurrencies"
+    >
+      <mat-form-field class="w-100">
+        <mat-label>Amount</mat-label>
+        <input matInput formControlName="amount"/>
+        @if (form.get("amount").hasError("required")) {
+          <mat-error>Amount is required</mat-error>
+        } @else if (form.get("amount").hasError("pattern")) {
+          <mat-error>Invalid amount</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field class="w-100 mx-lg-3">
+        <mat-label>From</mat-label>
+        <mat-select formControlName="from">
+          <mat-option
+            *ngFor="let currency of supportedCurrencies.code"
+            [value]="currency"
+          >{{ currency }} - {{ supportedCurrencies[currency] }}
+          </mat-option>
+        </mat-select>
+        @if (form.get("from").invalid) {
+          <mat-error>Please select the currency</mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field class="w-100">
+        <mat-label>To</mat-label>
+        <mat-select formControlName="to">
+          <mat-option
+            *ngFor="let currency of supportedCurrencies.code"
+            [value]="currency"
+          >{{ currency }} - {{ supportedCurrencies[currency] }}
+          </mat-option>
+        </mat-select>
+        @if (form.get("to").invalid) {
+          <mat-error>Please select the currency</mat-error>
+        }
+      </mat-form-field>
     </div>
 
-    <div class="d-flex align-items-center ms-auto">
-      <button class="btn btn-primary" type="submit">Convert</button>
+    <div class="d-flex">
+      <div class="flex-grow-1" *ngIf="convertedData$ | async as data">
+        <div class="text-muted fs-6">
+          {{ form.get("amount").value }}
+          {{ supportedCurrencies[data.base_code] }} =
+        </div>
+        <div class="h2">
+          {{ data.conversion_result }}
+          {{ supportedCurrencies[data.target_code] }}
+        </div>
+        <div class="text-muted">
+          1 {{ data.base_code }} = {{ data.conversion_rate }} &nbsp;{{
+            data.target_code
+          }}
+        </div>
+
+        <div class="fw-lighter mt-3">
+          Last updated {{ data.time_last_update_utc | date: "medium" }}
+        </div>
+      </div>
+
+      <div class="d-flex align-items-center ms-auto">
+        <button
+          mat-flat-button
+          color="primary"
+          class="rounded-pill"
+          type="submit"
+        >
+          Convert
+        </button>
+      </div>
     </div>
-  </div>
-</form>
+  </form>
+</mat-card-content>

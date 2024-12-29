@@ -3,11 +3,11 @@
     You are currently offline. Some features may not be available.
   </div>
 
-  <div class="rounded p-lg-5 p-3 bg-white mb-4">
+  <mat-card class="p-lg-5 p-3 mb-4" appearance="outlined">
     <app-convertor
       [supportedCurrencies]="supportedCurrencies$ | async"
     ></app-convertor>
-  </div>
+  </mat-card>
 
   <app-exchange-rate
     class="d-flex flex-column"

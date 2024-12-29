@@ -1,10 +1,19 @@
 <ng-container *ngIf="{ isOnline: isOnline$ | async } as context">
-  <div class="rounded p-lg-5 p-3 bg-white mb-4">
-    <app-card-title
-      class="d-block mb-4"
-      title="Exchange Rates"
-      [secondaryTemplate]="compareRatesBtn"
-    ></app-card-title>
+  <mat-card class="p-lg-5 p-3 mb-4" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>
+        <p class="flex-grow-1">Exchange Rates</p>
+        <button
+          mat-flat-button
+          color="primary"
+          class="rounded-pill"
+          (click)="compareRates(selection.selected, basedCodeField.value, '1M')"
+          [disabled]="selection.selected.length === 0 || !context.isOnline"
+        >
+          Compare
+        </button>
+      </mat-card-title>
+    </mat-card-header>
 
     <app-exchange-rate-search
       [searchField]="searchField"
@@ -47,7 +56,7 @@
         >
           <div class="d-flex align-items-lg-center flex-lg-row flex-column">
             <div>
-              <img [src]="rate.url" [alt]="rate.name"/>
+              <img [src]="rate.url" [alt]="rate.code"/>
               <span class="fs-6 mx-2">{{ rate.code }}</span>
             </div>
             <div [ngClass]="{ 'text-muted': i > 0 }">{{ rate.name }}</div>
@@ -70,7 +79,7 @@
         }}
       </tr>
     </table>
-  </div>
+  </mat-card>
 
   <ng-container *ngIf="comparison$ | async as comparison">
     <app-historical

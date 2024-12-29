@@ -1,3 +1,17 @@
-<div class="container my-5">
+<ng-container *ngIf="{ isDarkMode: isDarkMode$ | async } as context">
+  <mat-toolbar color="primary">
+    <span>Currency Exchange App</span>
+    <button
+      mat-icon-button
+      (click)="toggleTheme(context.isDarkMode)"
+      [matTooltip]="
+        context.isDarkMode ? 'Switch to light Mode' : 'Switch to dark mode'
+      "
+    >
+      <mat-icon>{{ context.isDarkMode ? "wb_sunny" : "nights_stay" }}</mat-icon>
+    </button>
+  </mat-toolbar>
+</ng-container>
+<div class="container my-lg-5 my-3">
   <app-dashboard></app-dashboard>
 </div>

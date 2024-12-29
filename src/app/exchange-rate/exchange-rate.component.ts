@@ -36,12 +36,13 @@ import { ExchangeRateSearchComponent } from './exchange-rate-search/exchange-rat
 import { FormControl } from '@angular/forms';
 import { formatDate } from 'date-fns';
 import { ExchangeRateHistoricalComponent } from './exchange-rate-historical/exchange-rate-historical.component';
-import { CardTitleComponent } from '../shared/component/card-title/card-title.component';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ComparisonRateAnalysis } from '../shared/models/comparison.interface';
 import { PERIOD } from '../shared/component/time-period/time-period.component';
 import { LocalStorageService } from '../service/local-storage.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-exchange-rate',
@@ -54,8 +55,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     MatCheckboxModule,
     ExchangeRateSearchComponent,
     ExchangeRateHistoricalComponent,
-    CardTitleComponent,
     MatProgressSpinnerModule,
+    MatCardModule,
+    MatButtonModule,
   ],
   templateUrl: './exchange-rate.component.html',
   styleUrl: './exchange-rate.component.css',

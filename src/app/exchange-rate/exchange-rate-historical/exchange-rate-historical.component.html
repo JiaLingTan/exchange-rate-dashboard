@@ -1,10 +1,11 @@
-<div class="rounded p-lg-5 p-3 bg-white my-5">
-  <app-card-title
-    [title]="baseCode.concat(' conversion chart')"
-  ></app-card-title>
+<mat-card class="p-lg-5 p-3 mb-4" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>{{ baseCode.concat(" conversion chart") }}</mat-card-title>
+  </mat-card-header>
+
   <app-time-period
     [currentPeriod]="period"
     (onPeriodClick)="onPeriodClick.emit($event)"
   ></app-time-period>
   <div #lineChart></div>
-</div>
+</mat-card>
